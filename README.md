@@ -3,6 +3,6 @@ Tasks regarding algorithms, data structures, unit testing and concurrency.
 
 
 ## datastructures
-This module contains usage examples and comparison of the following data structures:
+This module contains benchmarking of usage examples of the following data structures:
  - ArrayList
  - LinkedList
