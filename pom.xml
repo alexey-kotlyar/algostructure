@@ -17,6 +17,7 @@
     </properties>
 
     <modules>
+        <module>datastructures</module>
         <module>algorithms</module>
     </modules>
 
