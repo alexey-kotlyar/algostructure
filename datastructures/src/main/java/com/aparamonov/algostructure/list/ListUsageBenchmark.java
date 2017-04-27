@@ -1,6 +1,5 @@
 package com.aparamonov.algostructure.list;
 
-import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -27,7 +26,8 @@ public class ListUsageBenchmark {
                 .warmupTime(TimeValue.seconds(1))
                 .warmupIterations(2)
                 .measurementTime(TimeValue.seconds(1))
-                .measurementIterations(3)
+                .measurementIterations(2)
+                .timeout(TimeValue.minutes(5))
                 .threads(1)
                 .forks(1)
                 .shouldFailOnError(true)
