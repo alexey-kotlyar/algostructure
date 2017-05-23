@@ -1,9 +1,11 @@
 package com.aparamonov.algostructure.search;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +38,30 @@ public class DijkstraTest {
     @Test
     public void testDijkstra() {
         dijkstra.search(nodes.get("six"));
+
+        Node<String> n1 = new Node<>("one");
+        Node<String> n2 = new Node<>("two");
+        Node<String> n3 = new Node<>("three");
+        Node<String> n4 = new Node<>("four");
+        Node<String> n5 = new Node<>("five");
+        Node<String> n6 = new Node<>("six");
+
+        n1.setDistance(11);
+        n2.setDistance(12);
+        n3.setDistance(2);
+        n4.setDistance(13);
+        n5.setDistance(9);
+        n6.setDistance(0);
+
+        List<Node<String>> expected = Arrays.asList(n1, n2, n3, n6, n4, n5);
+
+        List<Node<String>> actual =  new ArrayList<>();
+        actual.addAll(nodes.values());
+
+        for (int i = 0; i < nodes.size(); i++) {
+            Assert.assertEquals(expected.get(i).getData(), actual.get(i).getData());
+            Assert.assertEquals(expected.get(i).getDistance(), actual.get(i).getDistance());
+        }
 
         for(Node<String> n : nodes.values()) {
             System.out.println("Node " + n.getData() + " has distance: " + n.getDistance());

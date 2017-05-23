@@ -1,9 +1,11 @@
 package com.aparamonov.algostructure.search;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +14,7 @@ import java.util.Map;
  */
 public class DFSTest {
 
-    private DFS dfs;
+    private DFS<String> dfs;
     private Map<String, Node<String>> nodes;
     private List<String> edges;
 
@@ -20,26 +22,29 @@ public class DFSTest {
     public void setUp() {
         GraphHelper helper = new GraphHelper();
         edges = new ArrayList<>();
-        edges.add("one,two,7");
-        edges.add("one,three,9");
-        edges.add("one,six,14");
-        edges.add("two,three,10");
-        edges.add("two,four,15");
-        edges.add("three,four,11");
-        edges.add("three,six,2");
-        edges.add("four,five,6");
-        edges.add("six,five,9");
+        edges.add("one,two,0");
+        edges.add("one,three,0");
+        edges.add("one,four,0");
+        edges.add("two,five,0");
+        edges.add("three,six,0");
+        edges.add("three,seven,0");
+        edges.add("four,eight,0");
+        edges.add("seven,nine,0");
+        edges.add("eight,ten,0");
         nodes = helper.makeGraph(edges);
-        dfs = new DFS<String>();
+        dfs = new DFS<>();
     }
 
     @Test
     public void testDFS() {
-        Node<String> targetNode = nodes.get("six");
+        Node<String> targetNode = nodes.get("one");
         List<Node<String>> ns = dfs.search(targetNode);
 
-        for(Node<String> n : ns) {
-            System.out.println("Node: " + n.getData());
+        List<String> expected =
+                Arrays.asList("one", "three", "six", "seven", "nine", "four", "eight", "ten", "two", "five");
+
+        for (int i = 0; i < ns.size(); i++) {
+            Assert.assertEquals(expected.get(i), ns.get(i).getData());
         }
     }
 }
