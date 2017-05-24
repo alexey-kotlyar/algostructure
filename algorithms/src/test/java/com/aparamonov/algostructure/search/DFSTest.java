@@ -16,12 +16,11 @@ public class DFSTest {
 
     private DFS<String> dfs;
     private Map<String, Node<String>> nodes;
-    private List<String> edges;
 
     @Before
     public void setUp() {
         GraphHelper helper = new GraphHelper();
-        edges = new ArrayList<>();
+        List<String> edges = new ArrayList<>();
         edges.add("one,two,0");
         edges.add("one,three,0");
         edges.add("one,four,0");
@@ -46,5 +45,8 @@ public class DFSTest {
         for (int i = 0; i < ns.size(); i++) {
             Assert.assertEquals(expected.get(i), ns.get(i).getData());
         }
+
+        ns.forEach(n -> System.out.println("Node: " + n.getData()));
     }
+
 }

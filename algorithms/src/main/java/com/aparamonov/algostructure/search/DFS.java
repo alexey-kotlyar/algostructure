@@ -1,6 +1,6 @@
 package com.aparamonov.algostructure.search;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,8 +14,8 @@ public class DFS<T> {
 
     public List<Node<T>> search(Node<T> node) {
 
-        List<Node<T>> visited = new ArrayList<>();
-        List<Node<T>> unvisited = new ArrayList<>();
+        List<Node<T>> visited = new LinkedList<>();
+        List<Node<T>> unvisited = new LinkedList<>();
         unvisited.add(node);
 
         while(!unvisited.isEmpty()) {

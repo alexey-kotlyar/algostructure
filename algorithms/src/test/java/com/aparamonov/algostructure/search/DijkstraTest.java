@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class DijkstraTest {
 
-    private Dijkstra dijkstra;
+    private Dijkstra<String> dijkstra;
     private Map<String, Node<String>> nodes;
     private List<String> edges;
 
@@ -32,12 +32,13 @@ public class DijkstraTest {
         edges.add("four,five,6");
         edges.add("six,five,9");
         nodes = helper.makeGraph(edges);
-        dijkstra = new Dijkstra();
+        dijkstra = new Dijkstra<>();
     }
 
     @Test
     public void testDijkstra() {
-        dijkstra.search(nodes.get("six"));
+        Node<String> targetNode = nodes.get("six");
+        dijkstra.search(targetNode);
 
         Node<String> n1 = new Node<>("one");
         Node<String> n2 = new Node<>("two");
@@ -63,8 +64,6 @@ public class DijkstraTest {
             Assert.assertEquals(expected.get(i).getDistance(), actual.get(i).getDistance());
         }
 
-        for(Node<String> n : nodes.values()) {
-            System.out.println("Node " + n.getData() + " has distance: " + n.getDistance());
-        }
+        nodes.values().forEach(n -> System.out.println("Node " + n.getData() + " has distance: " + n.getDistance()));
     }
 }

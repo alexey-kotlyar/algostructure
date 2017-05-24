@@ -7,9 +7,9 @@ import java.util.*;
  *
  * Created by andrey.paramonov@sigma.software on 10.05.17.
  */
-public class Dijkstra {
+public class Dijkstra<T> {
 
-    public <T> void search(Node<T> start) {
+    public void search(Node<T> start) {
         PriorityQueue<Node<T>> pq = new PriorityQueue<>(Comparator.comparing(Node::getDistance));
         start.setDistance(0);
         pq.offer(start);
